@@ -1,10 +1,12 @@
+import remoteConfig from "../config/remote.config";
+
 const axios = require('axios');
 
 class AuthService{
 
     static async verify(code){
         try{
-            let response = await axios.post("http://localhost:8000/api/auth/verify",{code});
+            let response = await axios.post(remoteConfig.url + "/api/auth/verify",{code});
             console.log(response);
             return response.data;
         }catch(err){
@@ -15,4 +17,4 @@ class AuthService{
 
 }
 
-module.exports = AuthService;
+export default AuthService;

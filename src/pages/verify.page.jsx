@@ -6,9 +6,11 @@ import {
 
 import Utils from "../lib/utils/utils";
 import appConfig from "../config/app.config";
-import AuthService from "../services/auth.service";
 import { toast } from "react-toastify";
 import {Button} from 'react-bootstrap';
+
+
+import AuthService from "../services/auth.service";
 
 const VerifyPage = (props) => {
 
