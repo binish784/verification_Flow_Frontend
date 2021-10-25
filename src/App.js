@@ -1,24 +1,36 @@
-import logo from './logo.svg';
-import './App.css';
+import './assets/css/style.css';
+
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+} from "react-router-dom";
+
+import {
+  Container
+} from "react-bootstrap";
+
+import routes from './routes/routes';
+import { ToastContainer } from 'react-toastify';
+
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'react-toastify/dist/ReactToastify.css';
+
+import { createBrowserHistory } from "history";
+const routeHistory = createBrowserHistory();
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Container>
+      <Router history={routeHistory}>
+        <Switch>
+          {routes.map((route,key)=>{
+            return <Route key={key} path={route.path} render={(props)=><route.component {...props} />} />
+          })}
+        </Switch>
+      </Router>
+      <ToastContainer/>
+    </Container>
   );
 }
 
